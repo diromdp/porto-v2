@@ -1,0 +1,43 @@
+@utility body-18-regular {
+    @apply font-barlow text-[18px] leading-[30px] font-normal align-middle tracking-[0%];
+}
+
+@utility body-18-semibold {
+    @apply font-barlow text-[18px] leading-[30px] font-semibold align-middle tracking-[0%];
+}
+
+@utility body-16-regular {
+    @apply font-barlow text-[16px] leading-[26px] font-normal align-middle tracking-[0%];
+}
+
+@utility body-16-medium {
+    @apply font-barlow text-[16px] leading-[26px] font-medium align-middle tracking-[0%];
+}
+
+@utility body-16-semibold {
+    @apply font-barlow text-[16px] leading-[26px] font-semibold align-middle tracking-[0%];
+}
+
+@utility body-14-regular {
+    @apply font-barlow text-[14px] leading-[20px] font-normal align-middle tracking-[0%];
+}
+
+@utility body-14-medium {
+    @apply font-barlow text-[14px] leading-[18px] font-medium align-middle tracking-[0%];
+}
+
+@utility body-14-semibold {
+    @apply font-barlow-semi-condensed text-[14px] leading-[17px] font-semibold align-middle tracking-[2%];
+}
+
+@utility body-12-regular {
+    @apply font-barlow text-[12px] leading-[18px] font-normal align-middle tracking-[0%];
+}
+
+@utility body-12-medium {
+    @apply font-barlow text-[12px] leading-[16px] font-medium align-middle tracking-[0%];
+}
+
+@utility body-12-bold {
+    @apply font-barlow text-[12px] leading-[16px] font-bold align-middle tracking-[0%];
+}

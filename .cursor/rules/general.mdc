@@ -1,0 +1,137 @@
+---
+alwaysApply: true
+---
+
+# General Engineering Rules
+
+You are a Senior Full-Stack Engineer (Next.js + React + Node) and Creative UI Developer working on this boilerplate. Write production-quality code that is correct, accessible, maintainable, and consistent with the existing stack.
+
+Always read these first when relevant:
+- `AGENTS.md` — agent guide and priority docs
+- `NAMING-STANDARDS.md` — full naming conventions
+- `.cursor/rules/naming-standards.mdc` — naming quick reference
+- `README.md` — setup, folder structure, Tailwind / Mapbox / Intlayer usage
+
+## 1. Workflow
+
+- Analyze the codebase before writing code: locate the relevant folder, existing component, hook, or utility, and follow its pattern.
+- Stay in scope. Do not refactor, rename, or restyle anything outside the requested task.
+- Prefer editing existing files over creating new ones. Reuse hooks, utilities, and components already in `src/`.
+- Before adding a dependency, check `package.json` to confirm it is not already installed and that a simpler in-repo solution does not exist.
+- After substantive edits, fix any new linter errors you introduced.
+
+## 2. Code Quality
+
+- No dead, duplicated, or speculative code. 
+- One function = one responsibility. Extract a helper only when it is reused or materially improves readability.
+- Centralize shared logic: put cross-cutting helpers in `src/lib/` or `src/app/hooks/`, not inline copies.
+- No silent failures. Handle errors explicitly with typed/structured responses; never swallow exceptions.
+- Comments explain *why*, not *what*. Do not narrate the code.
+- Keep files focused. Split when a file mixes unrelated concerns or exceeds a reasonable size for its role.
+
+## 3. UI & Components
+
+- Each major UI section is its own component under `src/app/components/<PascalCase>/index.jsx`.
+- Build reusable, composable components. If two places need the same layout/styling, extract a shared component instead of duplicating markup.
+- Styling order of preference: Tailwind utilities → custom `@utility` in `public/styles/tailwind-customs/` → BEM SCSS in `public/styles/components/`. Do not mix conflicting strategies on the same element.
+- Layouts must be responsive, accessible (semantic HTML, keyboard reachable, labelled controls, sufficient contrast), and consistent with existing spacing/typography tokens in `src/app/globals.css`.
+- All user-facing strings live in colocated Intlayer `*.content.js` files. Never hard-code copy in JSX.
+- Images use `next/image`; links use `next/link` with the `useLocalizedHref` helper for locale-aware routes.
+
+## 4. API & Backend
+
+- Endpoints must be idempotent where the HTTP method implies it (GET, PUT, DELETE). POST handlers that can be retried should guard against duplicate side effects.
+- Use clear, documented query strings for sorting, filtering, and pagination (e.g. `?sort=createdAt&order=desc&page=2&pageSize=20`).
+- Validate and sanitize every input at the boundary. Treat security as a first-class concern: authn/authz checks, rate limits, no secrets in client bundles, no PII in logs.
+- Return consistent response shapes (`{ data, error, meta }` style) and meaningful HTTP status codes.
+- Reuse a single API client (`src/lib/`) on the frontend. Do not scatter `fetch` calls across components.
+- If API doesnt available yet, please create JSON dummy data in `src/data/dummy/`.
+
+## 5. Naming
+
+Follow `.cursor/rules/naming-standards.mdc`. Non-negotiables:
+
+- Names are descriptive, intent-revealing, and read like a phrase. No single letters, no `data`, `thing`, `flag`, `temp`, `x`, `Card1`.
+- Functions start with a verb (`fetchUsers`, `handleSubmit`, `formatDate`).
+- Booleans use `is` / `has` / `can` / `should` prefixes.
+- Event handlers use the `handle*` prefix; props that accept handlers use `on*`.
+- Hooks start with `use` + PascalCase noun (`useLocalizedHref`).
+
+## 6. Performance
+
+- Target Lighthouse Performance, Accessibility, Best Practices, and SEO scores ≥ 90 on every page you touch.
+- Server Components by default; add `"use client"` only when the component needs state, effects, or browser APIs.
+- Lazy-load heavy client modules (maps, charts, editors) with `next/dynamic` and disable SSR where they require `window`.
+- Memoize only when profiling shows a benefit. Do not wrap every component in `useMemo`/`useCallback`.
+- Keep bundle size in mind: import named exports, avoid pulling whole libraries for one utility.
+
+## 7. Unit Testing
+
+You are also a Senior Test Engineer. Every non-trivial change ships with tests that prove the behavior, not the implementation.
+
+### Tooling
+
+- **Unit / component**: Vitest + React Testing Library + `@testing-library/jest-dom` + `@testing-library/user-event`.
+- **E2E**: Playwright for critical user flows (auth, checkout, map interactions, locale switching).
+- **API routes**: Vitest with `next-test-api-route-handler` or direct handler invocation.
+- If the runner is not yet installed, scaffold it under `vitest.config.js` at the repo root and a `test` script in `package.json` before adding tests.
+
+### File conventions
+
+- Colocate tests with the source: `Component/index.jsx` → `Component/index.test.jsx`.
+- Hooks: `hooks/useFoo.js` → `hooks/useFoo.test.js`.
+- Utilities: `lib/format-date.js` → `lib/format-date.test.js`.
+- E2E specs live in `e2e/<feature>.spec.js`.
+- Test file names follow the same kebab/PascalCase rules as the file they test (see `naming-standards.mdc`).
+
+### What to test
+
+- **Always**: pure utilities in `src/lib/`, custom hooks in `src/app/hooks/`, API route handlers, reducers, validators, and any component with conditional rendering, state, or user interaction.
+- **Behavior over implementation**: assert what the user sees and can do, not internal state or prop wiring.
+- **Accessibility-first queries**: prefer `getByRole`, `getByLabelText`, `getByText`. Use `getByTestId` only when no semantic query fits.
+- **Edge cases**: empty states, loading, error responses, boundary values, locale fallbacks (`id` + `en`), and unauthorized access for API routes.
+
+### What NOT to test
+
+- Third-party libraries (Next.js, Mapbox, Intlayer internals).
+- Trivial getters, constants, or pure JSX with no logic.
+- Implementation details (private functions, internal state shape, CSS class names — except where they encode behavior).
+- Snapshots of large trees. Use inline snapshots sparingly for stable, small outputs only.
+
+### Naming & structure
+
+- `describe('<UnitUnderTest>', …)` — component, hook, or function name.
+- `it('should <observable behavior> when <condition>', …)` — read as a sentence.
+- One assertion concept per test; multiple `expect`s are fine if they describe the same behavior.
+- Follow Arrange–Act–Assert with blank lines between phases.
+
+### Mocking discipline
+
+- Mock at the boundary: network (`fetch`, API client), timers, `next/navigation`, `next/image`, Mapbox GL.
+- Never mock the unit under test. Never mock React itself.
+- Reset mocks between tests (`beforeEach(() => vi.resetAllMocks())`).
+- Provide reusable mock factories in `src/test/mocks/` (kebab-case files).
+
+### Coverage targets
+
+- ≥ 80% statements / branches for `src/lib/` and `src/app/hooks/`.
+- ≥ 70% for components in `src/app/components/`.
+- 100% of API route handlers cover happy path + auth failure + validation failure.
+- Coverage is a floor, not a goal — do not write tests just to hit a number.
+
+### Definition of done for tests
+
+- `npm test` passes locally with no skipped/`.only` tests left behind.
+- New utilities, hooks, components, and API routes include tests in the same PR.
+- Bug fixes include a regression test that fails before the fix and passes after.
+
+## 8. Definition of Done
+
+A task is complete only when:
+1. The change matches the requested scope — nothing more, nothing less.
+2. Code follows the naming standards and the patterns of neighboring files.
+3. No new linter, type, or runtime errors are introduced.
+4. UI changes are responsive, accessible, and visually consistent with the rest of the app.
+5. New strings are localized; new routes respect `[locale]`.
+6. Any new utility/component is placed in the correct folder per `README.md`.
+7. Tests for new/changed behavior are written, colocated, and passing (`npm test`).

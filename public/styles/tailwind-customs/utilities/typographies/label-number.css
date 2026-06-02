@@ -1,0 +1,15 @@
+@utility navigation-menu {
+    @apply font-barlow font-semibold text-[18px] leading-[19px] tracking-[0.02em] text-center align-middle;
+}
+
+@utility small-label {
+    @apply font-barlow text-[14px] leading-[20px] font-bold tracking-[0.04em] uppercase;
+}
+
+@utility label {
+    @apply font-barlow text-[24px] leading-[26px] font-semibold tracking-[0.06em] uppercase;
+}
+
+@utility number {
+    @apply font-barlow text-[56px] leading-[56px] font-bold;
+}

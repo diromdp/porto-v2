@@ -1,0 +1,27 @@
+@utility btn {
+    @apply flex items-center justify-center px-[16px] py-[12px] rounded-[8px] transition-colors duration-300 cursor-pointer;
+}
+
+@utility btn-primary {
+    @apply cta-btn-1 text-khg-benthic-blue bg-khg-mist-white;
+
+    &:hover, &:active, &:focus {
+        @apply bg-khg-leaf-green text-khg-white;
+    }
+}
+
+@utility btn-outline-white {
+    @apply cta-btn-1 text-khg-mist-white outline-none ring ring-[1px] ring-khg-mist-white;
+
+    &:hover, &:active, &:focus {
+        @apply bg-khg-leaf-green text-khg-white ring-khg-leaf-green;
+    }
+}
+
+@utility btn-outline-dark {
+    @apply cta-btn-1 text-khg-benthic-blue outline-none ring ring-[1px] ring-khg-benthic-blue;
+
+    &:hover, &:active, &:focus {
+        @apply bg-khg-leaf-green text-khg-white ring-khg-leaf-green;
+    }
+}

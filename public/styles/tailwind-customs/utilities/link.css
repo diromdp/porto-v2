@@ -1,0 +1,25 @@
+@utility link {
+    @apply relative inline-block text-khg-white body-18-regular pb-[5px] transition-colors duration-300;
+
+    &::after {
+        content: '';
+        @apply absolute left-0 bottom-0 w-full border-b-[1px] border-dashed border-khg-white transition-colors duration-300;
+    }
+    
+    &:hover {
+        @apply text-khg-leaf-green;
+
+        &::after {
+            @apply border-khg-leaf-green;
+        }
+    }
+}
+
+@utility link-dark {
+    @apply relative inline-block text-khg-benthic-blue body-18-regular pb-[5px] transition-colors duration-300;
+
+    &::after {
+        content: '';
+        @apply absolute left-0 bottom-0 w-full border-b-[1px] border-dashed border-khg-benthic-blue transition-colors duration-300;
+    }
+}

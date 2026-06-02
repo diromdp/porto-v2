@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "name": "streets",
+            "style": "mapbox://styles/mapbox/streets-v12",
+            "image": "/assets/basemap/default.png"
+        },
+        {
+            "name": "light",
+            "style": "mapbox://styles/mapbox/light-v11",
+            "image": "/assets/basemap/grayscale.png"
+        },
+        {
+            "name": "satellite",
+            "style": "mapbox://styles/mapbox/satellite-streets-v12",
+            "image": "/assets/basemap/satelite.png"
+        }
+    ]
+}

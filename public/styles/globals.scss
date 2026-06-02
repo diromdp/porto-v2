@@ -1,0 +1,6 @@
+@use "sass:meta";
+@use "../styles/utilities/index" as utilities;
+@use "../styles/components/index" as components;
+
+@import "../../public/styles/tailwind-customs/index.css";
+@include meta.load-css("../../src/app/globals.css");

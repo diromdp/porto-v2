@@ -1,0 +1,11 @@
+.mrv {
+    @apply relative w-full sm:h-[calc(100dvh-72px)] h-[calc(100dvh-56px)] overflow-hidden;
+
+    .mapbox-container {
+        @apply absolute h-full top-0 left-0 w-full;
+
+        .mapboxgl-canvas {
+            width: 100% !important;
+        }
+    }
+}

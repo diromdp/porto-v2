@@ -1,0 +1,43 @@
+@layer base {
+    /* default scrollbar (hidden thumb but keeps space) */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    /* hovering over scroll area */
+    *:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(120, 120, 120, 0.4);
+    }
+
+    /* when scrolling (JS adds .scrolling) */
+    body.scrolling *::-webkit-scrollbar-thumb {
+        background-color: rgba(120, 120, 120, 0.6);
+    }
+
+    /* optional scrollbar track */
+    ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.03);
+    }
+
+    /* firefox support */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+    }
+
+    *:hover {
+        scrollbar-color: rgba(120, 120, 120, 0.4) rgba(0, 0, 0, 0.03);
+    }
+
+    body.scrolling * {
+        scrollbar-color: rgba(120, 120, 120, 0.6) rgba(0, 0, 0, 0.03);
+    }
+}
