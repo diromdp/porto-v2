@@ -27,3 +27,7 @@ When working in this boilerplate, read and follow **[NAMING-STANDARDS.md](./NAMI
 - Never use vague names: `data`, `x`, `flag`, `thing`, `process`
 
 Cursor picks up `.cursor/rules/naming-standards.mdc` automatically in this project.
+
+
+## Design 
+Baca `./DESIGN.md` 

@@ -21,7 +21,7 @@ export default function useLocaleSwitcherItems() {
 
         const newPath = pathParts.length ? `/${pathParts.join("/")}` : "";
 
-        return targetLocale === "id" ? newPath || "/" : `/${targetLocale}${newPath}`;
+        return targetLocale === "en" ? newPath || "/" : `/${targetLocale}${newPath}`;
     };
 
     const items = availableLocales.map((locItem) => {

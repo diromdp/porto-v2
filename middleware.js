@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const DEFAULT_LOCALE = "id";
+const DEFAULT_LOCALE = "en";
 const PUBLIC_FILE = /\.(.*)$/;
 
 const LOCALE_REGEX = /^[a-z]{2}(-[A-Z]{2})?$/;

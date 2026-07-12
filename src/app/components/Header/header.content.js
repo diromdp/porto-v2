@@ -4,16 +4,20 @@ const content = {
     key: "header-content",
     content: {
         brand: t({
-            en: "Boilerplate",
-            id: "Boilerplate",
+            en: "Dirom Purbowiseno",
+            id: "Dirom Purbowiseno",
         }),
-        home: t({
-            en: "Home",
-            id: "Beranda",
+        work: t({
+            en: "Work",
+            id: "Karya",
         }),
-        map: t({
-            en: "Map",
-            id: "Peta",
+        about: t({
+            en: "About",
+            id: "Tentang",
+        }),
+        contact: t({
+            en: "Contact",
+            id: "Kontak",
         }),
     },
 };

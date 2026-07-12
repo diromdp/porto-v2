@@ -48,7 +48,7 @@
 }
 
 .header {
-    @apply sticky top-0 z-50 bg-khg-benthic-blue text-khg-white;
+    @apply sticky top-0 z-50 bg-forest-ink text-linen-white border-b border-white/10;
 
     &__inner {
         @apply container flex items-center justify-between h-14 sm:h-[72px];
@@ -59,15 +59,15 @@
     }
 
     &__link {
-        @apply body-16-regular transition-colors duration-200 hover:text-khg-leaf-green;
+        @apply body-16-regular text-linen-white/85 transition-colors duration-200 hover:text-sage-wash;
     }
 }
 
 .footer {
-    @apply bg-khg-benthic-blue text-khg-white mt-auto;
+    @apply bg-forest-ink text-linen-white mt-auto border-t border-white/10;
 
     &__inner {
-        @apply container py-8 text-center body-14-regular;
+        @apply container py-8 text-center body-14-regular text-linen-white/80;
     }
 }
 

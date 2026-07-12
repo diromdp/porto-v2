@@ -1,0 +1,28 @@
+/* Portfolio design system — Tailwind v4 theme tokens.
+   These generate utilities like `bg-forest-ink`, `text-charcoal`, `font-display`.
+   Font tokens reference the next/font CSS variables set in the locale layout. */
+@theme {
+    /* Colors */
+    --color-forest-ink: #0f3e17;
+    --color-forest-ink-hover: #0b5121;
+    --color-sage-wash: #b1dbb8;
+    --color-mist-blue: #b6ced5;
+    --color-mint-veil: #cfe7d3;
+    --color-linen: #e1f4df;
+    --color-linen-white: #fffefc;
+    --color-hairline-gray: #e5e7eb;
+    --color-charcoal: #222222;
+    --color-graphite: #333333;
+    --color-true-black: #000000;
+
+    /* Fonts — use the project's loaded Barlow families (typographies system),
+       never a system-ui fallback. */
+    --font-display: var(--font-barlow-semi-condensed), sans-serif;
+    --font-sans-body: var(--font-barlow), sans-serif;
+
+    /* Border Radius */
+    --radius-nav: 7px;
+    --radius-cards: 14px;
+    --radius-badges: 999px;
+    --radius-buttons: 14px;
+}

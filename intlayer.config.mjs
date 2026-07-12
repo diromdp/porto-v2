@@ -7,7 +7,7 @@ const config = {
             Locales.INDONESIAN,
             Locales.ENGLISH,
         ],
-        defaultLocale: Locales.INDONESIAN,
+        defaultLocale: Locales.ENGLISH,
         localeDetection: false,
         strictMode: "strict",
     },

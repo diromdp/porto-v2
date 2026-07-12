@@ -1,0 +1,362 @@
+.portfolio {
+    @apply bg-linen-white text-true-black font-sans-body;
+
+    /* Shared section shell */
+    &__section {
+        @apply container py-16 md:py-24;
+    }
+
+    &__tag {
+        @apply inline-block bg-mist-blue text-forest-ink rounded-badges px-[14px] py-[7px] text-[12px] font-medium tracking-[-0.36px] uppercase;
+    }
+
+    &__heading {
+        @apply font-display font-light text-forest-ink mt-[14px] text-[2rem] leading-[1.15] tracking-[-0.02em] md:text-[2.5rem];
+    }
+
+    &__section-head {
+        @apply max-w-2xl mb-12;
+    }
+
+    /* ---- Hero ---- */
+    &__hero {
+        @apply bg-sage-wash;
+
+        &-inner {
+            @apply container py-20 md:py-28 grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center;
+        }
+
+        &-badge {
+            @apply inline-flex items-center gap-2 bg-linen-white text-forest-ink rounded-badges px-[14px] py-[7px] text-[13px] font-medium w-fit;
+
+            &::before {
+                content: "";
+                @apply w-2 h-2 rounded-full bg-forest-ink;
+                animation: portfolio-badge-pulse 1.8s ease-out infinite;
+            }
+        }
+
+        &-greeting {
+            @apply block text-charcoal text-[18px] mt-7 mb-2;
+        }
+
+        &-name {
+            @apply font-display font-light text-forest-ink text-[3rem] leading-[1.02] tracking-[-0.03em] md:text-[4.5rem];
+        }
+
+        &-role {
+            @apply block font-sans-body font-light text-charcoal text-[1.5rem] mt-3 md:text-[1.875rem];
+        }
+
+        &-tagline {
+            @apply text-charcoal text-[18px] leading-[1.5] mt-6 max-w-xl;
+        }
+
+        &-actions {
+            @apply flex flex-wrap gap-3 mt-9;
+        }
+
+        &-meta {
+            @apply flex flex-wrap items-center gap-x-6 gap-y-2 mt-8;
+        }
+
+        &-meta-item {
+            @apply inline-flex items-center gap-2 text-charcoal text-[15px] transition-colors duration-200;
+
+            svg {
+                @apply text-forest-ink;
+            }
+
+            &:hover {
+                @apply text-forest-ink;
+            }
+        }
+
+        &-photo {
+            @apply relative justify-self-center md:justify-self-end;
+        }
+
+        &-img {
+            @apply object-cover w-[300px] h-[300px] md:w-[440px] md:h-[440px];
+            -webkit-mask-image: url("/assets/mask-cta.png");
+            mask-image: url("/assets/mask-cta.png");
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+        }
+    }
+
+    /* ---- Buttons ---- */
+    &__btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-buttons px-[21px] py-[14px] text-[15px] font-medium transition-colors duration-300 cursor-pointer;
+
+        &--primary {
+            @apply bg-forest-ink text-linen-white;
+
+            &:hover {
+                @apply bg-forest-ink-hover;
+            }
+        }
+
+        &--ghost {
+            @apply text-forest-ink ring-1 ring-forest-ink/30;
+
+            &:hover {
+                @apply bg-forest-ink text-linen-white ring-forest-ink;
+            }
+        }
+    }
+
+    /* ---- Stats ---- */
+    &__stats {
+        @apply border-t border-hairline-gray bg-linen-white;
+
+        &-inner {
+            @apply container grid grid-cols-2 gap-y-10 py-12 md:grid-cols-4;
+        }
+    }
+
+    &__stat {
+        &-value {
+            @apply font-sans-body font-light text-forest-ink text-[3rem] leading-none tracking-[-0.04em];
+        }
+
+        &-label {
+            @apply block text-charcoal text-[13px] mt-2;
+        }
+    }
+
+    /* ---- About — centered editorial statement ---- */
+    &__about {
+        @apply bg-linen-white;
+
+        &-inner {
+            @apply container py-24 md:py-32 max-w-3xl flex flex-col items-center text-center;
+        }
+
+        &-statement {
+            @apply font-display font-light text-forest-ink text-[1.75rem] leading-[1.4] tracking-[-0.01em] mt-8 md:text-[2.5rem] md:leading-[1.35];
+        }
+    }
+
+    /* ---- Experience timeline ---- */
+    &__timeline {
+        @apply mt-4 flex flex-col;
+    }
+
+    &__job {
+        @apply grid gap-3 border-t border-hairline-gray py-7 md:grid-cols-[200px_1fr] md:gap-8;
+
+        &-period {
+            @apply text-charcoal text-[14px] tracking-[-0.42px];
+        }
+
+        &-company {
+            @apply font-display font-light text-forest-ink text-[1.5rem] leading-tight;
+        }
+
+        &-role {
+            @apply text-graphite text-[15px] mt-1 mb-3;
+        }
+
+        &-summary {
+            @apply text-charcoal text-[16px] leading-[1.55] max-w-2xl;
+        }
+
+        /* Achievements block under the summary */
+        &-achievements {
+            @apply mt-6 max-w-2xl rounded-cards bg-linen/50 p-5 md:p-6;
+
+            &-label {
+                @apply block text-[11px] uppercase tracking-[0.12em] text-forest-ink font-semibold;
+            }
+
+            &-list {
+                @apply mt-4 flex flex-col gap-[10px];
+            }
+        }
+
+        &-achievement {
+            @apply relative pl-5 text-charcoal text-[15px] leading-[1.5];
+
+            &::before {
+                content: "";
+                @apply absolute left-0 top-[9px] w-[5px] h-[5px] rounded-full bg-forest-ink;
+            }
+        }
+    }
+
+    /* ---- Tag chips (tech stack) ---- */
+    &__chips {
+        @apply flex flex-wrap gap-2 mt-4;
+    }
+
+    &__chip {
+        @apply inline-block rounded-badges border border-hairline-gray px-[12px] py-[5px] text-[12px] text-graphite;
+    }
+
+    /* ---- Project cards ---- */
+    &__projects-grid {
+        @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+    }
+
+    &__project {
+        @apply flex flex-col rounded-cards border border-hairline-gray bg-linen-white p-[24px] transition-colors duration-300;
+
+        &:hover {
+            @apply border-forest-ink/40 bg-linen/50;
+        }
+
+        &-client {
+            @apply text-[12px] uppercase tracking-[0.08em] text-graphite;
+        }
+
+        &-name {
+            @apply font-display font-light text-forest-ink text-[1.625rem] leading-tight mt-1;
+        }
+
+        /* My contribution — a labelled block that sits above the platform description */
+        &-role {
+            @apply mt-4 rounded-[10px] bg-linen/60 px-[14px] py-[12px];
+        }
+
+        &-role-label {
+            @apply block text-[11px] uppercase tracking-[0.1em] text-forest-ink font-medium;
+        }
+
+        &-role-text {
+            @apply text-charcoal text-[14px] leading-[1.5] mt-[6px];
+        }
+
+        &-desc {
+            @apply text-charcoal text-[15px] leading-[1.55] mt-4 flex-1;
+        }
+
+        &-link {
+            @apply inline-flex items-center gap-1 text-forest-ink text-[14px] font-medium mt-6;
+
+            svg {
+                @apply transition-transform duration-300 ease-out;
+            }
+        }
+
+        &:hover &-link svg {
+            @apply translate-x-[4px] -translate-y-[4px];
+        }
+    }
+
+    /* ---- Products ---- */
+    &__products {
+        @apply bg-linen;
+    }
+
+    &__products-grid {
+        @apply grid gap-6;
+    }
+
+    /* Single product: a calm card aligned to the left, not stretched wide */
+    &__product {
+        @apply flex flex-col rounded-cards border border-hairline-gray bg-linen-white p-[32px] max-w-md transition-colors duration-300;
+
+        &:hover {
+            @apply border-forest-ink/40 bg-linen/50;
+        }
+
+        &-live {
+            @apply inline-flex items-center self-start gap-2 rounded-badges bg-mist-blue text-charcoal px-[12px] py-[5px] text-[12px] font-medium uppercase tracking-[0.06em];
+
+            &::before {
+                content: "";
+                @apply w-2 h-2 rounded-full bg-charcoal;
+            }
+        }
+
+        &-name {
+            @apply font-display font-light text-forest-ink text-[2rem] leading-tight mt-4;
+        }
+
+        &-desc {
+            @apply text-charcoal text-[15px] leading-[1.55] mt-2;
+        }
+
+        &-link {
+            @apply self-start mt-7;
+
+            svg {
+                @apply transition-transform duration-300 ease-out;
+            }
+        }
+
+        &:hover &-link svg {
+            @apply translate-x-[4px] -translate-y-[4px];
+        }
+    }
+
+    /* ---- Skills ---- */
+    &__skills-grid {
+        @apply grid gap-10 md:grid-cols-2 lg:grid-cols-3;
+    }
+
+    &__skill-title {
+        @apply text-forest-ink text-[14px] font-semibold uppercase tracking-[0.04em] pb-3 mb-4 border-b border-hairline-gray;
+    }
+
+    &__skill-list {
+        @apply flex flex-col gap-2 text-charcoal text-[16px];
+    }
+
+    /* ---- Contact ---- */
+    &__contact {
+        @apply bg-forest-ink text-linen-white;
+
+        &-inner {
+            @apply container py-20 md:py-28 text-center flex flex-col items-center;
+        }
+
+        &-tag {
+            @apply inline-block bg-linen-white/15 text-linen-white rounded-badges px-[14px] py-[7px] text-[12px] font-medium uppercase tracking-[-0.36px];
+        }
+
+        &-heading {
+            @apply font-display font-light text-linen-white text-[2.25rem] leading-tight tracking-[-0.02em] mt-5 md:text-[3.25rem];
+        }
+
+        &-body {
+            @apply text-linen-white/80 text-[18px] mt-4 max-w-md;
+        }
+
+        &-links {
+            @apply flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 mt-10;
+        }
+
+        &-link {
+            @apply inline-flex items-center gap-2 rounded-buttons bg-linen-white/10 px-[21px] py-[14px] text-[15px] text-linen-white transition-colors duration-300;
+
+            &:hover {
+                @apply bg-linen-white text-forest-ink;
+            }
+        }
+    }
+}
+
+/* Pulsing "open for work" dot in the hero badge */
+@keyframes portfolio-badge-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(15, 62, 23, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(15, 62, 23, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(15, 62, 23, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .portfolio__hero-badge::before {
+        animation: none;
+    }
+}

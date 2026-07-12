@@ -4,8 +4,8 @@ const content = {
     key: "footer-content",
     content: {
         copyright: t({
-            en: "Next.js Boilerplate — Tailwind, Mapbox, Intlayer",
-            id: "Next.js Boilerplate — Tailwind, Mapbox, Intlayer",
+            en: "© 2026 Dirom Purbowiseno. Front-End & Mobile Developer based in Jakarta, Indonesia.",
+            id: "© 2026 Dirom Purbowiseno. Front-End & Mobile Developer, berbasis di Jakarta, Indonesia.",
         }),
     },
 };

@@ -1,0 +1,77 @@
+/* ---- Client logo marquee ----
+   An auto-scrolling social-proof strip in the "Investor Logo Strip" spirit:
+   monochrome wordmarks, no card, generous breathing room, edges faded so
+   logos drift in and out rather than clipping hard. */
+.client-marquee {
+    @apply bg-linen-white py-12 md:py-16 overflow-hidden;
+
+    &__caption {
+        @apply container text-center font-display font-light text-forest-ink text-[1.375rem] leading-snug tracking-[-0.01em] mb-10 md:text-[1.75rem];
+    }
+
+    /* Fade both edges so the loop reads as continuous, not cut off. */
+    &__viewport {
+        @apply relative w-full;
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            #000 12%,
+            #000 88%,
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            #000 12%,
+            #000 88%,
+            transparent 100%
+        );
+    }
+
+    /* No flex `gap` here: gap is omitted after the final item, which throws the
+       -50% reset off by half a gap and makes the loop's seam visible. Instead
+       every item carries its own trailing margin, so the two identical copies
+       are exactly equal width and translateX(-50%) lands on a perfect seam. */
+    &__track {
+        @apply flex w-max items-center;
+        animation: client-marquee-scroll 70s linear infinite;
+    }
+
+    /* Pause the drift when a visitor hovers, so a logo can be read. */
+    &__viewport:hover &__track {
+        animation-play-state: paused;
+    }
+
+    &__item {
+        @apply flex shrink-0 items-center mr-14 md:mr-24;
+    }
+
+    &__logo {
+        @apply h-8 md:h-10 w-auto text-graphite opacity-60 grayscale transition-all duration-300;
+
+        &:hover {
+            @apply opacity-100 grayscale-0 text-forest-ink;
+        }
+    }
+}
+
+/* Half the distance because the track holds two identical copies of the list. */
+@keyframes client-marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .client-marquee__track {
+        animation: none;
+        @apply flex-wrap justify-center;
+    }
+    .client-marquee__viewport {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}

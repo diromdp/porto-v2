@@ -30,18 +30,19 @@ const barlowSemiCondensed = Barlow_Semi_Condensed({
 
 export async function generateMetadata({ params }) {
     const { locale } = await params;
-    const isDefault = locale === "id";
+    const isDefault = locale === "en";
     const canonicalPath = isDefault ? "/" : `/${locale}`;
 
     return {
-        title: "Next.js Boilerplate",
-        description: "Next.js boilerplate with Tailwind, Mapbox, and Intlayer i18n",
+        title: "Dirom Purbowiseno, Front-End Developer",
+        description:
+            "I'm Dirom Purbowiseno, a front-end developer. For the past six years I've been building fast, interactive web apps with React, Next.js, and TypeScript.",
         alternates: {
             canonical: `${$utils.getSiteUrl()}${canonicalPath}`,
             languages: {
                 "x-default": `${$utils.getSiteUrl()}/`,
-                id: `${$utils.getSiteUrl()}/`,
-                en: `${$utils.getSiteUrl()}/en`,
+                en: `${$utils.getSiteUrl()}/`,
+                id: `${$utils.getSiteUrl()}/id`,
             },
         },
     };

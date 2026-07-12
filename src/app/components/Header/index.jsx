@@ -1,28 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { useIntlayer } from "next-intlayer";
-import { useLocalizedHref } from "@/app/hooks/useLocalizedHref";
-import LocaleSwitcher from "@/app/components/LocaleSwitcher";
+import { useIntlayer, useLocale } from "next-intlayer";
 
 export default function Header() {
     const content = useIntlayer("header-content");
-    const getHref = useLocalizedHref();
+    const { locale } = useLocale();
+    const homeHref = locale === "en" ? "/" : `/${locale}`;
 
     return (
         <header className="header">
             <div className="header__inner">
-                <Link href={getHref("/")} className="font-semibold text-lg">
-                    {content.brand.value}
+                <Link href={homeHref} className="header__logo" aria-label={content.brand.value}>
+                    DP
                 </Link>
                 <nav className="header__nav">
-                    <Link href={getHref("/")} className="header__link">
-                        {content.home.value}
-                    </Link>
-                    <Link href={getHref("/map")} className="header__link">
-                        {content.map.value}
-                    </Link>
-                    <LocaleSwitcher />
+                    <a href="#projects" className="header__link">
+                        {content.work.value}
+                    </a>
+                    <a href="#contact" className="header__link">
+                        {content.contact.value}
+                    </a>
                 </nav>
             </div>
         </header>
