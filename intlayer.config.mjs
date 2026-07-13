@@ -12,11 +12,11 @@ const config = {
         strictMode: "strict",
     },
     editor: {
-        liveSync: true,
+        liveSync: false,
     },
     build: {
         optimize: true,
-        importMode: "live",
+        importMode: "static",
     },
 };
 
