@@ -61,6 +61,14 @@
     &__link {
         @apply body-16-regular text-linen-white/85 transition-colors duration-200 hover:text-sage-wash;
     }
+
+    &__cv {
+        @apply inline-flex items-center gap-2 rounded-full bg-linen-white text-forest-ink px-4 py-2 text-[14px] font-medium transition-colors duration-200;
+
+        &:hover {
+            @apply bg-sage-wash;
+        }
+    }
 }
 
 .footer {

@@ -19,6 +19,10 @@ const content = {
             en: "Contact",
             id: "Kontak",
         }),
+        cv: t({
+            en: "Download CV",
+            id: "Unduh CV",
+        }),
     },
 };
 

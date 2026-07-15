@@ -12,6 +12,23 @@ const nextConfig = {
     // workspace root, so middleware trace files (middleware.js.nft.json) are
     // written to the wrong path and the Vercel build fails with ENOENT.
     outputFileTracingRoot: projectRoot,
+    // Keep intlayer's config bundler (which pulls in esbuild) out of the
+    // webpack bundle — webpack can't parse esbuild's shipped .d.ts files.
+    // Required so the webpack production build (see build script) succeeds.
+    serverExternalPackages: ["esbuild", "@intlayer/config"],
+    webpack: (config, { isServer, webpack }) => {
+        // esbuild is only used at build/dev time by intlayer; never at runtime
+        // (dictionaries are precompiled). Leaving it as an external require
+        // stops webpack from trying to parse esbuild's .d.ts files.
+        if (isServer) {
+            config.externals.push({ esbuild: "commonjs esbuild" });
+        }
+        // Belt-and-suspenders: ignore any .d.ts pulled into a require context.
+        config.plugins.push(
+            new webpack.IgnorePlugin({ resourceRegExp: /\.d\.ts$/ }),
+        );
+        return config;
+    },
     images: {
         remotePatterns: [
             {

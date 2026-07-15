@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useIntlayer, useLocale } from "next-intlayer";
+import { Download } from "lucide-react";
 
 export default function Header() {
     const content = useIntlayer("header-content");
@@ -20,6 +21,14 @@ export default function Header() {
                     </a>
                     <a href="#contact" className="header__link">
                         {content.contact.value}
+                    </a>
+                    <a
+                        href="/assets/cv/Dirom%20Purbowiseno%20-%20Front-End%20Developer%20-%20CV.pdf"
+                        download="Dirom Purbowiseno - Front-End Developer - CV.pdf"
+                        className="header__cv"
+                    >
+                        <Download size={16} aria-hidden />
+                        {content.cv.value}
                     </a>
                 </nav>
             </div>
