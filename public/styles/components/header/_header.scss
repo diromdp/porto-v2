@@ -1,0 +1,58 @@
+// Glassmorphism header — stays anchored over the canvas with a hairline base.
+// Desktop shows the inline nav; below `md` it collapses into the Sheet drawer.
+.header {
+    @apply sticky top-0 z-50 border-b border-brand-dark/[0.08] bg-canvas/85 text-brand-dark backdrop-blur-xl;
+
+    &__inner {
+        @apply container flex h-16 items-center justify-between gap-6 sm:h-[76px];
+    }
+
+    &__nav {
+        @apply hidden items-center gap-6 md:flex md:gap-8;
+    }
+
+    &__link {
+        @apply text-[14px] font-medium text-brand-dark/65 transition-colors duration-200 hover:text-brand-pink;
+    }
+
+    &__cv {
+        @apply inline-flex items-center gap-2 rounded-badges bg-brand-dark px-5 py-[11px] text-[14px] font-medium text-canvas transition-colors duration-300;
+
+        &:hover {
+            @apply bg-brand-pink text-white;
+        }
+    }
+
+    /* ---- Mobile drawer ---- */
+    &__burger {
+        @apply -mr-1 inline-flex h-10 w-10 items-center justify-center rounded-nav text-brand-dark transition-colors duration-200 md:hidden;
+
+        &:hover {
+            @apply text-brand-pink;
+        }
+
+        &:focus-visible {
+            @apply outline-none ring-2 ring-brand-pink;
+        }
+    }
+
+    &__drawer-title {
+        @apply flex items-center gap-[10px];
+    }
+
+    &__drawer-nav {
+        @apply flex flex-col;
+    }
+
+    &__drawer-link {
+        @apply border-b border-brand-dark/[0.08] py-4 font-display text-[20px] font-semibold tracking-[-0.025em] text-brand-dark transition-colors duration-200;
+
+        &:hover {
+            @apply text-brand-pink;
+        }
+    }
+
+    &__drawer-cv {
+        @apply mt-auto justify-center py-[14px] text-[15px];
+    }
+}

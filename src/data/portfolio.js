@@ -5,8 +5,8 @@
 export const PROFILE = {
     name: "Dirom Purbowiseno",
     role: {
-        id: "Front-End Developer",
-        en: "Front-End Developer",
+        id: "Fullstack Developer — Backend, Frontend & Mobile",
+        en: "Fullstack Developer — Backend, Frontend & Mobile",
     },
     location: "Jakarta, Indonesia",
     email: "infohijra4@gmail.com",
@@ -112,6 +112,20 @@ export const CLIENTS = [
 ];
 
 export const PROJECTS = [
+    {
+        name: "Prevention Platform",
+        client: "Australian Government",
+        url: "https://prevention-platform.org/",
+        contribution: {
+            id: "Slicing dan integrasi seluruh halaman, sekaligus membangun CMS custom untuk situs ini.",
+            en: "Sliced and integrated the entire site, and built a custom CMS for it.",
+        },
+        description: {
+            id: "Inisiatif Pemerintah Australia untuk memperkuat upaya pencegahan kekerasan berbasis gender (GBV) di kawasan Asia Tenggara.",
+            en: "An Australian Government initiative that aims to strengthen efforts to prevent gender-based violence (GBV) in the Southeast Asia region.",
+        },
+        stack: ["React.js", "Next.js", "REST API", "JavaScript", "TailwindCSS"],
+    },
     {
         name: "Journey of Food",
         client: "UNEP",

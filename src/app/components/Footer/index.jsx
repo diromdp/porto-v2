@@ -1,6 +1,7 @@
 "use client";
 
 import { useIntlayer } from "next-intlayer";
+import { PROFILE } from "@/data/portfolio";
 
 export default function Footer() {
     const content = useIntlayer("footer-content");
@@ -8,7 +9,8 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer__inner">
-                {content.copyright.value}
+                <span>{content.copyright.value}</span>
+                <span>{PROFILE.location}</span>
             </div>
         </footer>
     );

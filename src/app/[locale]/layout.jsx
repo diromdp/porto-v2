@@ -1,4 +1,4 @@
-import { Barlow, Barlow_Condensed, Barlow_Semi_Condensed } from "next/font/google";
+import { Manrope, Inter, JetBrains_Mono } from "next/font/google";
 import "@/app/globals.css";
 import "../../../public/styles/globals.scss";
 import GlobalUtilsProvider from "@/app/providers/GlobalUtilsProvider";
@@ -10,22 +10,22 @@ import { getHTMLTextDir } from "intlayer";
 
 export { generateStaticParams } from "next-intlayer";
 
-const barlow = Barlow({
+const manrope = Manrope({
     subsets: ["latin"],
-    variable: "--font-barlow",
+    variable: "--font-manrope",
     weight: ["400", "500", "600", "700"],
 });
 
-const barlowCondensed = Barlow_Condensed({
+const inter = Inter({
     subsets: ["latin"],
-    variable: "--font-barlow-condensed",
-    weight: ["400", "500", "600", "700"],
+    variable: "--font-inter",
+    weight: ["400", "500", "600"],
 });
 
-const barlowSemiCondensed = Barlow_Semi_Condensed({
+const jetbrainsMono = JetBrains_Mono({
     subsets: ["latin"],
-    variable: "--font-barlow-semi-condensed",
-    weight: ["400", "500", "600", "700"],
+    variable: "--font-jetbrains-mono",
+    weight: ["500", "600"],
 });
 
 export async function generateMetadata({ params }) {
@@ -34,9 +34,9 @@ export async function generateMetadata({ params }) {
     const canonicalPath = isDefault ? "/" : `/${locale}`;
 
     return {
-        title: "Dirom Purbowiseno, Front-End Developer",
+        title: "Dirom Purbowiseno, Fullstack Developer",
         description:
-            "I'm Dirom Purbowiseno, a front-end developer. For the past six years I've been building fast, interactive web apps with React, Next.js, and TypeScript.",
+            "I'm Dirom Purbowiseno, a fullstack developer. For the past eight years I've been building products end to end — backend, frontend, and mobile — with Node.js, Nest.js, React, Next.js, and React Native.",
         alternates: {
             canonical: `${$utils.getSiteUrl()}${canonicalPath}`,
             languages: {
@@ -55,9 +55,9 @@ export default async function LocaleLayout({ children, params }) {
         <html lang={locale} dir={getHTMLTextDir(locale)}>
             <body
                 className={`
-                    ${barlow.variable}
-                    ${barlowCondensed.variable}
-                    ${barlowSemiCondensed.variable}
+                    ${manrope.variable}
+                    ${inter.variable}
+                    ${jetbrainsMono.variable}
                     antialiased
                 `}
             >

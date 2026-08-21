@@ -24,6 +24,15 @@ export default function HomePage() {
 
     return (
         <div className="portfolio">
+            {/* Fixed vertical guides marking the container edges — the site-wide
+                structural motif. Purely decorative. */}
+            <div className="portfolio__lines" aria-hidden>
+                <div className="portfolio__lines-inner">
+                    <span />
+                    <span />
+                </div>
+            </div>
+
             {/* ---------------- Hero ---------------- */}
             <section id="top" className="portfolio__hero">
                 <div className="portfolio__hero-inner">
@@ -223,7 +232,7 @@ export default function HomePage() {
                 </Reveal>
                 <div className="portfolio__skills-grid">
                     {SKILL_GROUPS.map((group, i) => (
-                        <Reveal key={tr(group.title)} delay={(i % 4) * 0.06}>
+                        <Reveal key={tr(group.title)} className="portfolio__skill-card" delay={(i % 4) * 0.06}>
                             <h3 className="portfolio__skill-title">{tr(group.title)}</h3>
                             <ul className="portfolio__skill-list">
                                 {group.skills.map((skill) => (
@@ -238,9 +247,11 @@ export default function HomePage() {
             {/* ---------------- Contact ---------------- */}
             <section id="contact" className="portfolio__contact">
                 <Reveal className="portfolio__contact-inner">
-                    <span className="portfolio__contact-tag">{content.contact.tag.value}</span>
-                    <h2 className="portfolio__contact-heading">{content.contact.heading.value}</h2>
-                    <p className="portfolio__contact-body">{content.contact.body.value}</p>
+                    <div className="portfolio__contact-intro">
+                        <span className="portfolio__contact-tag">{content.contact.tag.value}</span>
+                        <h2 className="portfolio__contact-heading">{content.contact.heading.value}</h2>
+                        <p className="portfolio__contact-body">{content.contact.body.value}</p>
+                    </div>
                     <div className="portfolio__contact-links">
                         <a className="portfolio__contact-link" href={`mailto:${PROFILE.email}`}>
                             <Mail size={18} aria-hidden />

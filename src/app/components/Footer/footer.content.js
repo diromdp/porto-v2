@@ -4,8 +4,8 @@ const content = {
     key: "footer-content",
     content: {
         copyright: t({
-            en: "© 2026 Dirom Purbowiseno. Front-End & Mobile Developer based in Jakarta, Indonesia.",
-            id: "© 2026 Dirom Purbowiseno. Front-End & Mobile Developer, berbasis di Jakarta, Indonesia.",
+            en: "© 2026 Dirom Purbowiseno. Fullstack Developer — backend, frontend & mobile, based in Jakarta, Indonesia.",
+            id: "© 2026 Dirom Purbowiseno. Fullstack Developer — backend, frontend & mobile, berbasis di Jakarta, Indonesia.",
         }),
     },
 };

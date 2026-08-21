@@ -1,74 +1,107 @@
+/* ---- Portfolio landing ----
+   CreatorFlow language (see DESIGN.md): near-white canvas, midnight-blue ink,
+   one aggressive pink accent, white cards with low-opacity hairline borders,
+   mono labels, and fixed vertical container lines as the site-wide anchor. */
 .portfolio {
-    @apply bg-linen-white text-true-black font-sans-body;
+    @apply relative bg-canvas text-brand-dark font-sans-body;
+    counter-reset: portfolio-section;
+
+    /* Structural anchors — two fixed 1px guides on the container edges. */
+    &__lines {
+        @apply fixed inset-0 z-0 flex justify-center pointer-events-none;
+
+        &-inner {
+            @apply container flex h-full w-full justify-between;
+            /* The guides mark the container edge itself, so they keep the
+               narrower base gutter — section content is inset further in and
+               never runs up against a line. */
+            --container-padding: 16px;
+            --container-padding-md: 24px;
+            --container-padding-lg: 42px;
+            --container-padding-xl: 72px;
+        }
+
+        span {
+            @apply block h-full w-px bg-brand-dark/[0.07];
+        }
+    }
 
     /* Shared section shell */
     &__section {
-        @apply container py-16 md:py-24;
+        @apply container relative z-[1] border-t border-brand-dark/[0.08] py-16 md:py-20;
     }
 
+    /* Mono eyebrow, auto-numbered 01 — 02 — 03 in document order. */
     &__tag {
-        @apply inline-block bg-mist-blue text-forest-ink rounded-badges px-[14px] py-[7px] text-[12px] font-medium tracking-[-0.36px] uppercase;
+        @apply block font-mono-label text-[12px] font-semibold uppercase tracking-[0.08em] text-brand-pink;
+        counter-increment: portfolio-section;
+
+        &::before {
+            content: counter(portfolio-section, decimal-leading-zero) " — ";
+        }
     }
 
     &__heading {
-        @apply font-display font-light text-forest-ink mt-[14px] text-[2rem] leading-[1.15] tracking-[-0.02em] md:text-[2.5rem];
+        @apply mt-[18px] font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.03em] text-brand-dark md:text-[2.75rem];
     }
 
     &__section-head {
-        @apply max-w-2xl mb-12;
+        @apply mb-12 max-w-2xl;
     }
 
     /* ---- Hero ---- */
     &__hero {
-        @apply bg-sage-wash;
+        @apply relative z-[1] bg-canvas;
 
         &-inner {
-            @apply container py-20 md:py-28 grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center;
+            @apply container grid gap-12 py-20 md:grid-cols-[1.1fr_0.9fr] md:items-end md:py-24;
         }
 
         &-badge {
-            @apply inline-flex items-center gap-2 bg-linen-white text-forest-ink rounded-badges px-[14px] py-[7px] text-[13px] font-medium w-fit;
+            @apply inline-flex w-fit items-center gap-[10px] rounded-badges border border-brand-dark/10 bg-surface px-[14px] py-[7px] font-mono-label text-[12px] font-semibold uppercase tracking-[0.04em] text-brand-dark/70;
 
             &::before {
                 content: "";
-                @apply w-2 h-2 rounded-full bg-forest-ink;
+                @apply h-[6px] w-[6px] rounded-full bg-brand-pink;
                 animation: portfolio-badge-pulse 1.8s ease-out infinite;
             }
         }
 
         &-greeting {
-            @apply block text-charcoal text-[18px] mt-7 mb-2;
+            @apply mt-8 mb-3 block font-mono-label text-[12px] font-semibold uppercase tracking-[0.06em] text-brand-dark/45;
         }
 
         &-name {
-            @apply font-display font-light text-forest-ink text-[3rem] leading-[1.02] tracking-[-0.03em] md:text-[4.5rem];
+            @apply font-display text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.03em] text-brand-dark md:text-[4.5rem];
+            text-wrap: balance;
         }
 
         &-role {
-            @apply block font-sans-body font-light text-charcoal text-[1.5rem] mt-3 md:text-[1.875rem];
+            @apply mt-3 block font-display text-[1.25rem] font-medium tracking-[-0.02em] text-brand-pink md:text-[1.5rem];
         }
 
         &-tagline {
-            @apply text-charcoal text-[18px] leading-[1.5] mt-6 max-w-xl;
+            @apply mt-6 max-w-[560px] text-[17px] leading-[1.6] text-brand-dark/65;
+            text-wrap: pretty;
         }
 
         &-actions {
-            @apply flex flex-wrap gap-3 mt-9;
+            @apply mt-9 flex flex-wrap items-center gap-[14px];
         }
 
         &-meta {
-            @apply flex flex-wrap items-center gap-x-6 gap-y-2 mt-8;
+            @apply mt-8 flex flex-wrap items-center gap-x-6 gap-y-2;
         }
 
         &-meta-item {
-            @apply inline-flex items-center gap-2 text-charcoal text-[15px] transition-colors duration-200;
+            @apply inline-flex items-center gap-2 text-[15px] text-brand-dark/65 transition-colors duration-200;
 
             svg {
-                @apply text-forest-ink;
+                @apply text-brand-pink;
             }
 
             &:hover {
-                @apply text-forest-ink;
+                @apply text-brand-pink;
             }
         }
 
@@ -77,7 +110,7 @@
         }
 
         &-img {
-            @apply object-cover w-[300px] h-[300px] md:w-[440px] md:h-[440px];
+            @apply h-[300px] w-[300px] object-cover md:h-[440px] md:w-[440px];
             -webkit-mask-image: url("/assets/mask-cta.png");
             mask-image: url("/assets/mask-cta.png");
             -webkit-mask-size: contain;
@@ -89,89 +122,92 @@
         }
     }
 
-    /* ---- Buttons ---- */
+    /* ---- Buttons — uniformly pill-shaped, navy primary flipping to pink ---- */
     &__btn {
-        @apply inline-flex items-center justify-center gap-2 rounded-buttons px-[21px] py-[14px] text-[15px] font-medium transition-colors duration-300 cursor-pointer;
+        @apply inline-flex cursor-pointer items-center justify-center gap-[10px] rounded-buttons px-[28px] py-[15px] text-[15px] font-medium transition-colors duration-300;
 
         &--primary {
-            @apply bg-forest-ink text-linen-white;
+            @apply bg-brand-dark text-canvas;
 
             &:hover {
-                @apply bg-forest-ink-hover;
+                @apply bg-brand-pink text-white;
             }
         }
 
         &--ghost {
-            @apply text-forest-ink ring-1 ring-forest-ink/30;
+            @apply text-brand-dark ring-1 ring-brand-dark/15;
 
             &:hover {
-                @apply bg-forest-ink text-linen-white ring-forest-ink;
+                @apply text-brand-pink ring-brand-pink;
             }
         }
     }
 
-    /* ---- Stats ---- */
+    /* ---- Stats — one bordered panel, hairline gaps, final cell inverted ---- */
     &__stats {
-        @apply border-t border-hairline-gray bg-linen-white;
+        /* `container` on the section, so the panel itself stays padding-free and
+           its hairline gaps line up with the rest of the grid. */
+        @apply container relative z-[1] pb-16 md:pb-20;
 
         &-inner {
-            @apply container grid grid-cols-2 gap-y-10 py-12 md:grid-cols-4;
+            @apply grid grid-cols-2 gap-px overflow-hidden rounded-cards border border-brand-dark/10 bg-brand-dark/10 md:grid-cols-4;
         }
     }
 
     &__stat {
+        @apply bg-surface p-7;
+
+        &:last-child {
+            @apply bg-brand-dark;
+        }
+
         &-value {
-            @apply font-sans-body font-light text-forest-ink text-[3rem] leading-none tracking-[-0.04em];
+            @apply font-display text-[2.375rem] font-semibold leading-none tracking-[-0.03em] text-brand-dark;
         }
 
         &-label {
-            @apply block text-charcoal text-[13px] mt-2;
-        }
-    }
-
-    /* ---- About — centered editorial statement ---- */
-    &__about {
-        @apply bg-linen-white;
-
-        &-inner {
-            @apply container py-24 md:py-32 max-w-3xl flex flex-col items-center text-center;
+            @apply mt-2 block font-mono-label text-[11px] font-semibold uppercase tracking-[0.06em] text-brand-dark/50;
         }
 
-        &-statement {
-            @apply font-display font-light text-forest-ink text-[1.75rem] leading-[1.4] tracking-[-0.01em] mt-8 md:text-[2.5rem] md:leading-[1.35];
+        &:last-child &-value {
+            @apply text-canvas;
+        }
+
+        &:last-child &-label {
+            @apply text-canvas/55;
         }
     }
 
     /* ---- Experience timeline ---- */
     &__timeline {
-        @apply mt-4 flex flex-col;
+        @apply flex flex-col;
     }
 
     &__job {
-        @apply grid gap-3 border-t border-hairline-gray py-7 md:grid-cols-[200px_1fr] md:gap-8;
+        @apply grid gap-3 border-t border-brand-dark/10 py-7 md:grid-cols-[180px_1fr] md:items-start md:gap-10;
 
         &-period {
-            @apply text-charcoal text-[14px] tracking-[-0.42px];
+            @apply font-mono-label text-[12px] font-semibold tracking-[0.04em] text-brand-dark/45 md:pt-[6px];
         }
 
         &-company {
-            @apply font-display font-light text-forest-ink text-[1.5rem] leading-tight;
+            @apply font-display text-[1.5rem] font-semibold leading-tight tracking-[-0.025em] text-brand-dark;
         }
 
         &-role {
-            @apply text-graphite text-[15px] mt-1 mb-3;
+            @apply mt-[6px] mb-3 text-[15px] font-medium text-brand-pink;
         }
 
         &-summary {
-            @apply text-charcoal text-[16px] leading-[1.55] max-w-2xl;
+            @apply max-w-2xl text-[15px] leading-[1.6] text-brand-dark/60;
+            text-wrap: pretty;
         }
 
-        /* Achievements block under the summary */
         &-achievements {
-            @apply mt-6 max-w-2xl rounded-cards bg-linen/50 p-5 md:p-6;
+            @apply mt-6 max-w-2xl rounded-tile border border-brand-dark/[0.08] bg-surface p-5 md:p-6;
 
             &-label {
-                @apply block text-[11px] uppercase tracking-[0.12em] text-forest-ink font-semibold;
+                @apply block font-mono-label text-[11px] font-semibold uppercase tracking-[0.08em] text-brand-pink;
             }
 
             &-list {
@@ -180,22 +216,22 @@
         }
 
         &-achievement {
-            @apply relative pl-5 text-charcoal text-[15px] leading-[1.5];
+            @apply relative pl-5 text-[15px] leading-[1.5] text-brand-dark/70;
 
             &::before {
                 content: "";
-                @apply absolute left-0 top-[9px] w-[5px] h-[5px] rounded-full bg-forest-ink;
+                @apply absolute left-0 top-[9px] h-[5px] w-[5px] rounded-full bg-brand-pink;
             }
         }
     }
 
     /* ---- Tag chips (tech stack) ---- */
     &__chips {
-        @apply flex flex-wrap gap-2 mt-4;
+        @apply mt-4 flex flex-wrap gap-2;
     }
 
     &__chip {
-        @apply inline-block rounded-badges border border-hairline-gray px-[12px] py-[5px] text-[12px] text-graphite;
+        @apply inline-block rounded-badges bg-brand-pink/10 px-[12px] py-[6px] font-mono-label text-[11px] font-medium text-brand-pink-ink;
     }
 
     /* ---- Project cards ---- */
@@ -204,43 +240,48 @@
     }
 
     &__project {
-        @apply flex flex-col rounded-cards border border-hairline-gray bg-linen-white p-[24px] transition-colors duration-300;
+        @apply flex flex-col rounded-cards border border-brand-dark/[0.08] bg-surface p-7 transition-all duration-300;
 
         &:hover {
-            @apply border-forest-ink/40 bg-linen/50;
+            @apply -translate-y-[3px] border-brand-pink/35 shadow-[0_20px_48px_rgba(17,35,69,0.1)];
         }
 
         &-client {
-            @apply text-[12px] uppercase tracking-[0.08em] text-graphite;
+            @apply font-mono-label text-[11px] font-semibold uppercase tracking-[0.08em] text-brand-dark/42;
         }
 
         &-name {
-            @apply font-display font-light text-forest-ink text-[1.625rem] leading-tight mt-1;
+            @apply mt-2 font-display text-[1.375rem] font-semibold leading-tight tracking-[-0.025em] text-brand-dark;
         }
 
-        /* My contribution — a labelled block that sits above the platform description */
+        /* My contribution — labelled block above the platform description. */
         &-role {
-            @apply mt-4 rounded-[10px] bg-linen/60 px-[14px] py-[12px];
+            @apply mt-4 rounded-tile bg-canvas px-[16px] py-[14px];
         }
 
         &-role-label {
-            @apply block text-[11px] uppercase tracking-[0.1em] text-forest-ink font-medium;
+            @apply block font-mono-label text-[10px] font-semibold uppercase tracking-[0.08em] text-brand-pink;
         }
 
         &-role-text {
-            @apply text-charcoal text-[14px] leading-[1.5] mt-[6px];
+            @apply mt-[6px] text-[14px] leading-[1.5] text-brand-dark/70;
         }
 
         &-desc {
-            @apply text-charcoal text-[15px] leading-[1.55] mt-4 flex-1;
+            @apply mt-4 flex-1 text-[15px] leading-[1.6] text-brand-dark/62;
+            text-wrap: pretty;
         }
 
         &-link {
-            @apply inline-flex items-center gap-1 text-forest-ink text-[14px] font-medium mt-6;
+            @apply mt-6 inline-flex items-center gap-1 text-[14px] font-medium text-brand-dark transition-colors duration-300;
 
             svg {
                 @apply transition-transform duration-300 ease-out;
             }
+        }
+
+        &:hover &-link {
+            @apply text-brand-pink;
         }
 
         &:hover &-link svg {
@@ -250,40 +291,44 @@
 
     /* ---- Products ---- */
     &__products {
-        @apply bg-linen;
+        @apply relative z-[1] bg-canvas;
     }
 
     &__products-grid {
         @apply grid gap-6;
     }
 
-    /* Single product: a calm card aligned to the left, not stretched wide */
     &__product {
-        @apply flex flex-col rounded-cards border border-hairline-gray bg-linen-white p-[32px] max-w-md transition-colors duration-300;
+        @apply flex max-w-xl flex-col rounded-cards border border-brand-dark/[0.08] bg-surface p-8 transition-all duration-300;
 
         &:hover {
-            @apply border-forest-ink/40 bg-linen/50;
+            @apply -translate-y-[3px] border-brand-pink/35 shadow-[0_20px_48px_rgba(17,35,69,0.1)];
+        }
+
+        &-body {
+            @apply flex flex-col;
         }
 
         &-live {
-            @apply inline-flex items-center self-start gap-2 rounded-badges bg-mist-blue text-charcoal px-[12px] py-[5px] text-[12px] font-medium uppercase tracking-[0.06em];
+            @apply inline-flex items-center gap-2 self-start rounded-badges bg-brand-pink/10 px-[12px] py-[5px] font-mono-label text-[10px] font-semibold uppercase tracking-[0.06em] text-brand-pink-ink;
 
             &::before {
                 content: "";
-                @apply w-2 h-2 rounded-full bg-charcoal;
+                @apply h-[6px] w-[6px] rounded-full bg-brand-pink;
             }
         }
 
         &-name {
-            @apply font-display font-light text-forest-ink text-[2rem] leading-tight mt-4;
+            @apply mt-4 font-display text-[1.75rem] font-semibold leading-tight tracking-[-0.025em] text-brand-dark;
         }
 
         &-desc {
-            @apply text-charcoal text-[15px] leading-[1.55] mt-2;
+            @apply mt-3 text-[15px] leading-[1.6] text-brand-dark/62;
+            text-wrap: pretty;
         }
 
         &-link {
-            @apply self-start mt-7;
+            @apply mt-7 self-start;
 
             svg {
                 @apply transition-transform duration-300 ease-out;
@@ -297,46 +342,65 @@
 
     /* ---- Skills ---- */
     &__skills-grid {
-        @apply grid gap-10 md:grid-cols-2 lg:grid-cols-3;
+        @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+    }
+
+    &__skill-card {
+        @apply rounded-tile border border-brand-dark/[0.08] bg-surface p-6 transition-all duration-300;
+
+        &:hover {
+            @apply border-brand-pink/35 shadow-[0_12px_32px_rgba(17,35,69,0.08)];
+        }
     }
 
     &__skill-title {
-        @apply text-forest-ink text-[14px] font-semibold uppercase tracking-[0.04em] pb-3 mb-4 border-b border-hairline-gray;
+        @apply mb-[14px] font-mono-label text-[11px] font-semibold uppercase tracking-[0.06em] text-brand-dark/45;
     }
 
     &__skill-list {
-        @apply flex flex-col gap-2 text-charcoal text-[16px];
+        @apply flex flex-col gap-2 font-display text-[15px] font-medium tracking-[-0.015em] text-brand-dark;
     }
 
     /* ---- Contact ---- */
     &__contact {
-        @apply bg-forest-ink text-linen-white;
+        @apply relative z-[1] mt-10 bg-brand-dark text-canvas;
 
         &-inner {
-            @apply container py-20 md:py-28 text-center flex flex-col items-center;
+            @apply container grid gap-12 py-20 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-16 md:py-24;
         }
 
         &-tag {
-            @apply inline-block bg-linen-white/15 text-linen-white rounded-badges px-[14px] py-[7px] text-[12px] font-medium uppercase tracking-[-0.36px];
+            @apply block font-mono-label text-[12px] font-semibold uppercase tracking-[0.08em] text-brand-pink;
         }
 
         &-heading {
-            @apply font-display font-light text-linen-white text-[2.25rem] leading-tight tracking-[-0.02em] mt-5 md:text-[3.25rem];
+            @apply mt-5 font-display text-[2.25rem] font-semibold leading-[1.05] tracking-[-0.03em] text-canvas md:text-[3.25rem];
+            text-wrap: balance;
         }
 
         &-body {
-            @apply text-linen-white/80 text-[18px] mt-4 max-w-md;
+            @apply mt-5 max-w-[460px] text-[17px] leading-[1.6] text-canvas/62;
+            text-wrap: pretty;
         }
 
         &-links {
-            @apply flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 mt-10;
+            @apply flex flex-col gap-[14px];
         }
 
         &-link {
-            @apply inline-flex items-center gap-2 rounded-buttons bg-linen-white/10 px-[21px] py-[14px] text-[15px] text-linen-white transition-colors duration-300;
+            @apply inline-flex items-center gap-3 rounded-tile px-7 py-5 font-display text-[17px] font-semibold tracking-[-0.02em] text-canvas ring-1 ring-canvas/18 transition-colors duration-300;
 
-            &:hover {
-                @apply bg-linen-white text-forest-ink;
+            /* The primary channel (email) carries the accent. */
+            &:first-child {
+                @apply bg-brand-pink text-white ring-brand-pink;
+
+                &:hover {
+                    @apply bg-brand-pink-deep ring-brand-pink-deep;
+                }
+            }
+
+            &:not(:first-child):hover {
+                @apply ring-brand-pink;
             }
         }
     }
@@ -345,13 +409,13 @@
 /* Pulsing "open for work" dot in the hero badge */
 @keyframes portfolio-badge-pulse {
     0% {
-        box-shadow: 0 0 0 0 rgba(15, 62, 23, 0.5);
+        box-shadow: 0 0 0 0 rgba(251, 40, 117, 0.5);
     }
     70% {
-        box-shadow: 0 0 0 6px rgba(15, 62, 23, 0);
+        box-shadow: 0 0 0 6px rgba(251, 40, 117, 0);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(15, 62, 23, 0);
+        box-shadow: 0 0 0 0 rgba(251, 40, 117, 0);
     }
 }
 

@@ -1,8 +1,33 @@
-// "DP" monogram logo in the site header — simple, clean, outlined.
+// Wordmark in the site header — pink glow marker plus the full name.
 .header__logo {
-    @apply inline-flex items-center justify-center w-10 h-10 rounded-[10px] font-display text-[17px] font-medium leading-none text-khg-white tracking-[0.5px] ring-1 ring-white/25 transition-colors duration-300;
+    @apply inline-flex items-center gap-[10px] font-display text-[15px] font-semibold leading-none tracking-[-0.025em] text-brand-dark transition-colors duration-300;
 
     &:hover {
-        @apply ring-white/60;
+        @apply text-brand-pink;
+    }
+
+    &-dot {
+        @apply block h-[10px] w-[10px] shrink-0 rounded-full bg-brand-pink shadow-[0_0_0_4px_rgba(251,40,117,0.18)];
+        animation: header-logo-dot-bounce 1.6s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+    }
+}
+
+@keyframes header-logo-dot-bounce {
+    0%,
+    45%,
+    100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-5px);
+    }
+    32% {
+        transform: translateY(-2px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header__logo-dot {
+        animation: none;
     }
 }

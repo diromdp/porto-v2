@@ -23,6 +23,14 @@ const content = {
             en: "Download CV",
             id: "Unduh CV",
         }),
+        openMenu: t({
+            en: "Open menu",
+            id: "Buka menu",
+        }),
+        closeMenu: t({
+            en: "Close menu",
+            id: "Tutup menu",
+        }),
     },
 };
 
