@@ -5,49 +5,49 @@ const content = {
     content: {
         hero: {
             badge: t({
-                id: "Lagi terbuka buat proyek freelance & full-time",
-                en: "Open for freelance & full-time work",
+                id: "Terbuka untuk kemitraan proyek & posisi full-time",
+                en: "Open to project partnerships & full-time roles",
             }),
             greeting: t({ id: "Halo, saya", en: "Hi, I'm" }),
             tagline: t({
-                id: "Saya fokus menciptakan website dengan visual yang estetis, bersih, dan nyaman di mata. Dengan memadukan brand identity dan teknologi, saya menghidupkan kode lewat animasi yang halus dan interaktif. Misi saya adalah membantu organisasi eco-conscious menyampaikan perjalanan keberlanjutan mereka melalui platform digital yang tidak hanya berfungsi dengan baik, tapi juga memikat untuk dilihat.",
-                en: "I'm dedicated to crafting visually pleasing, clean, and intuitive web experiences. By bridging brand identity with modern development, I bring interfaces to life through smooth, subtle animations. I help eco-conscious organizations share their sustainability journey through engaging digital platforms that are both delightful to look at and effortless to navigate.",
+                id: "Saya bekerja sebagai partner teknis untuk bisnis dan organisasi. Kita petakan dulu masalahnya, lalu saya bangun website atau aplikasi yang menyelesaikannya, supaya bisnis Anda bisa bergerak lebih cepat. Skema kerja samanya kita atur bersama, adil untuk kedua pihak dan tidak memberatkan Anda.",
+                en: "I work as a technical partner for businesses and organizations. We pin down the problem first, then I build the website or app that solves it, so your business can move faster. We agree on a working arrangement together, one that's fair to both sides and doesn't weigh on you.",
             }),
             ctaWork: t({ id: "Lihat Karya", en: "See my work" }),
-            ctaContact: t({ id: "Sapa Saya", en: "Say hello" }),
+            ctaContact: t({ id: "Diskusikan Proyek", en: "Talk about your project" }),
         },
         about: {
             tag: t({ id: "Tentang", en: "About" }),
             heading: t({
-                id: "Sudah lebih dari 6 tahun saya berkutat di dunia web.",
-                en: "I've been building for the web for over six years.",
+                id: "Lebih dari 8 tahun saya membangun produk web.",
+                en: "I've been building for the web for over eight years.",
             }),
             body: t({
-                id: "Saya senang ngoprek tampilan yang berpusat pada pengguna, terutama dengan React.js dan Next.js. Karena nyaman juga di sisi JavaScript dan TypeScript, saya bisa ikut dari tahap ide sampai rilis. Buat saya, kode yang rapi dan rasa desain yang pas itu sama pentingnya.",
-                en: "I genuinely enjoy crafting user-centered interfaces, especially with React.js and Next.js. Since I'm comfortable across JavaScript and TypeScript too, I can jump in from the first idea all the way to launch. To me, clean code and a good sense of design matter just as much as each other.",
+                id: "Saya paling sering bekerja dengan React.js dan Next.js, dan nyaman dengan JavaScript maupun TypeScript, jadi saya bisa ikut dari tahap ide sampai rilis. Sebelum menulis kode, saya cari tahu dulu masalah bisnis yang mau diselesaikan. Buat saya, kode yang rapi dan tampilan yang enak dipakai sama pentingnya.",
+                en: "I mostly work with React.js and Next.js, and I'm comfortable with both JavaScript and TypeScript, so I can stay involved from the first idea to launch. Before writing any code, I find out what business problem we're solving. Clean code and an interface that's pleasant to use matter equally to me.",
             }),
             focusLabel: t({ id: "Tiga tahun terakhir", en: "These past three years" }),
             focus: t({
-                id: "Belakangan ini saya banyak menangani klien yang punya misi besar. Saya bantu mereka menuangkan ceritanya ke website yang cepat dan asyik buat dijelajahi.",
-                en: "Lately I've mostly worked with clients who carry a real mission. I help them turn that story into a site that's fast and genuinely fun to explore.",
+                id: "Sebagian besar klien saya adalah NGO, lembaga pemerintah, dan organisasi di bidang keberlanjutan. Saya bantu mereka menyampaikan programnya lewat website yang cepat dan enak dijelajahi.",
+                en: "Most of my clients are NGOs, government bodies, and sustainability organizations. I help them present their programs through websites that load fast and are easy to explore.",
             }),
         },
         experience: {
             tag: t({ id: "Pengalaman", en: "Experience" }),
-            heading: t({ id: "Tempat saya pernah berkarya", en: "Places I've worked" }),
+            heading: t({ id: "Tempat saya pernah bekerja", en: "Places I've worked" }),
             achievementsLabel: t({ id: "Pencapaian", en: "Achievements" }),
         },
         clients: {
             caption: t({
-                id: "Klien yang proyeknya saya kerjakan",
+                id: "Klien yang proyeknya pernah saya kerjakan",
                 en: "Clients whose projects I've worked on",
             }),
         },
         projects: {
             tag: t({ id: "Portofolio", en: "Portfolio" }),
             heading: t({
-                id: "Proyek yang saya garap dalam tiga tahun terakhir",
-                en: "Projects I've worked on these past three years",
+                id: "Proyek yang saya kerjakan dalam tiga tahun terakhir",
+                en: "Projects from the past three years",
             }),
             visit: t({ id: "Buka situsnya", en: "Visit site" }),
             pagespeed: t({ id: "PageSpeed", en: "PageSpeed" }),
@@ -61,19 +61,19 @@ const content = {
         skills: {
             tag: t({ id: "Keahlian", en: "Skills" }),
             heading: t({
-                id: "Teknologi & tools yang saya kuasai",
-                en: "Technologies & tools I've mastered",
+                id: "Teknologi & tools yang saya pakai",
+                en: "Technologies & tools I use",
             }),
         },
         contact: {
             tag: t({ id: "Kontak", en: "Contact" }),
             heading: t({
-                id: "Yuk, bikin sesuatu yang bagus bareng.",
-                en: "Let's make something good together.",
+                id: "Ceritakan masalah bisnis Anda.",
+                en: "Tell me what your business needs solved.",
             }),
             body: t({
-                id: "Punya proyek atau peluang menarik? Cerita ke saya, saya senang dengar.",
-                en: "Got a project or an opportunity in mind? Tell me about it, I'd love to hear it.",
+                id: "Kita bahas kebutuhannya dulu, lalu cari skema kerja sama yang adil untuk kedua pihak dan sesuai anggaran Anda.",
+                en: "We'll go through what you need first, then work out an arrangement that's fair to both of us and fits your budget.",
             }),
             emailLabel: t({ id: "Email", en: "Email" }),
             phoneLabel: t({ id: "Telepon", en: "Phone" }),

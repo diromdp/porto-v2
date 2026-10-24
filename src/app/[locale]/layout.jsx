@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
     return {
         title: "Dirom Purbowiseno, Fullstack Developer",
         description:
-            "I'm Dirom Purbowiseno, a fullstack developer. For the past eight years I've been building products end to end — backend, frontend, and mobile — with Node.js, Nest.js, React, Next.js, and React Native.",
+            "I'm Dirom Purbowiseno, a fullstack developer and technical partner for businesses. For eight years I've built products end to end, from backend to frontend and mobile, with Node.js, Nest.js, React, Next.js, and React Native.",
         alternates: {
             canonical: `${$utils.getSiteUrl()}${canonicalPath}`,
             languages: {
